@@ -15,6 +15,7 @@ public class TestBase {
 	Utility util = new Utility();
 	
   @BeforeTest
+  
   public void beforeTest() throws InterruptedException {
 	  
 		driver = util.launchbrowser();
@@ -23,6 +24,7 @@ public class TestBase {
   }
 
   @AfterTest
+  
   public void afterTest() {
 	  
 	  driver.close();
