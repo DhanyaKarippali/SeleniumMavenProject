@@ -1,9 +1,13 @@
 package testNGclasses;
 
+import java.io.IOException;
+
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import elements.clientspage;
 import elements.loginpage;
+import utility.Excelread;
 
 public class Clients extends TestBase {
 	
@@ -11,21 +15,29 @@ public class Clients extends TestBase {
 	
 	clientspage clientspage;
 	
-	@Test(priority=1)
+	Excelread excel;
+	
+	////////////////////////////Login Test/////////////////////////////////////////////
+	
+	@Test(priority=1,enabled=true)
 	  
-	public void loginpage1() throws InterruptedException {
+	public void loginpage1() throws InterruptedException, IOException {
 	
 	login=new loginpage(driver);
 	  
-	  //WebElement username=driver.findElement(By.id("loginform-username"));
+	excel=new Excelread();
+	   
+   	String username = excel.readData(0, 0);
+	
+	String password = excel.readData(0, 1);
 		
 		
 	  
-	   login.setUsername("carol");
+	   login.setUsername(username);
 		  
 		  Thread.sleep(5000);
 		  
-		  login.setPassword("1q2w3e4r");
+		  login.setPassword(password);
 		  
 		  Thread.sleep(5000);
 		 
@@ -35,7 +47,9 @@ public class Clients extends TestBase {
 	}
 	
 	
-  @Test(priority=2)
+	//////////////////////////////////Client search Test/////////////////////////////////
+	
+  @Test(priority=2,enabled=true)
   public void clientSearch() throws InterruptedException {
 	  
 	  clientspage=new clientspage(driver);
@@ -52,6 +66,6 @@ public class Clients extends TestBase {
 	  
 	  Thread.sleep(5000);
 	  
-	  
+	  Assert.assertEquals(clientspage.clientNameGetText(), "Appolo Nursing Home");
   }
 }

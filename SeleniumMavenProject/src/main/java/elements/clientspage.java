@@ -34,6 +34,10 @@ WebDriver driver;
 
 	public WebElement searchbutton;
 	
+	@FindBy(xpath ="//*[@id=\"w1\"]/table/tbody/tr/td[2]")
+
+	public WebElement clientnamevalidation;
+	
 	
 	public void setClientsName(String clientname1) {
 		
@@ -52,6 +56,11 @@ WebDriver driver;
 		
 		searchbutton.click();
 		
+	}
+	
+	public String clientNameGetText() {
+		
+		return clientnamevalidation.getText();
 	}
 
 }

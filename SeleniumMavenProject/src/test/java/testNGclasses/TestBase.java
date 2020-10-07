@@ -18,7 +18,7 @@ public class TestBase {
   
   public void beforeTest() throws InterruptedException {
 	  
-		driver = util.launchbrowser();
+		driver = util.launchbrowser1("https://www.qabible.in/payrollapp/","firefox");
 
 		Thread.sleep(5000);
   }
